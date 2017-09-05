@@ -22,9 +22,38 @@ if __name__ == '__main__':
 	I = imageio.imread(infile)
 
 	w, h, _ = I.shape
+	
+	# seznam_rgb = []
+	
 	for i in range(w):
 		for j in range(h):
-			okolica = get_neighborhod(I, i, j, 3)
+			# okolica = get_neighborhod(I, i, j, 3)
 			print((i, j), " -> ", I[i, j])
-
+			#seznam_rgb.append(I[i, j])
+			
+	
 	print("Dimenzije slike: ", I.shape)
+
+	
+	
+def get_neighborhod(I, i, j, k):
+	
+	infile = sys.argv[1]
+	I = imageio.imread(infile)
+	
+	w, h, _ = I.shape
+	
+	sez = []
+   
+    for idx in range(i - k, i + k):
+	    for jdx in range(j - k, j + k):
+			#kdaj smo izven slike
+			if idx == i and jdx == j:
+				continue
+			if i < 0 or i > h - 1 and j < 0 or j > w - 1:
+				continue
+			
+			
+            sez.append(I[idx, jdx])
+			
+			
