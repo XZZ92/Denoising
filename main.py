@@ -3,6 +3,8 @@ import sys
 import numpy
 import imageio
 
+import copy
+
 # OPIS POSTOPKA
 # Preberem ime vhodne in izhodne slike
 # Odprem vhodno sliko kot numpy array4
@@ -32,11 +34,34 @@ def get_neighborhood(I, i, j, k):
 	return seznam_okolice	
 	
 	
-# def get_geometric_median(I, ???): 
+def get_rgb_neighborhood(I, i, j):
+	
+	okolica1 = get_neighborhood(I, i, j, 3)
+	rgb_okolica = []
+	
+	for element in okolica1:
+		rgb = list(I[element])
+		rgb_okolica.append(rgb)
+	
+	return rgb_okolica
+		
+	
+	
+	
+def get_geometric_median(I, i, j):
+    okolica2 = get_rgb_neighborhood(I, i, j)
+    okolica2.sort()
+    d = len(okolica2)
+    if d % 2 == 0:
+        prvi = d // 2 - 1
+        drugi = d // 2
+        return((float((int(okolica2[prvi][0]) + int(okolica2[drugi][0])) / 2)), 
+		float((int(okolica2[prvi][1]) + int(okolica2[drugi][1])) / 2), 
+		float((int(okolica2[prvi][2]) + int(okolica2[drugi][2])) / 2))
 
-	# for i in range(w):
-		# for j in range(h):
-			# okolica = get_neighborhod(I, i, j, k)
+    else:
+        return(okolica2[d // 2])
+
 			
 			
 	
@@ -50,31 +75,18 @@ if __name__ == '__main__':
 
 	w, h, _ = I.shape
 	
+	outfile = copy.copy(I)
 	
 	for i in range(w):
 		for j in range(h):
-			okolica = get_neighborhood(I, i, j, 3)
-			print(okolica)
 			#print((i, j), " -> ", I[i, j])
-			#mediana = get_geometric_median(???)
+			okolica = get_neighborhood(I, i, j, 3)
+			#print(okolica)
+			rgb = get_rgb_neighborhood(I, i, j)
+			#print(rgb)
+			mediana = get_geometric_median(I, i, j)
+			print(mediana)
 			
 			
-	
-	print("Dimenzije slike: ", I.shape)
-	
-
-	
-	
-	
-
-			
-
-	
-
-	
-	
-	
-
-	
-			
+	print("Dimenzije slike: ", I.shape)		
 			
