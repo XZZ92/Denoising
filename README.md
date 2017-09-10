@@ -1,6 +1,6 @@
 # Image denoising
 
-***Welcome to my repository with a program for denoising images. ***
+*** Welcome to my repository with a program for denoising images. ***
 
 ### What is image noise and denoising?
 
@@ -8,7 +8,7 @@ Image noise is random (not present in the object imaged) variation of brightness
 Image denoising is a process of removing noise from an image, while at the same time preserving details and structures.
 
 
-Process description:
+### Process description:
 
 - read the infile and outfile name
 - open infile picture as numpy array and make a copy of it
