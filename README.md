@@ -1,6 +1,6 @@
 # Image denoising
 
-*** Welcome to my repository with a program for denoising images. ***
+Welcome to my repository with a program for denoising images. 
 
 ### What is image noise and denoising?
 
