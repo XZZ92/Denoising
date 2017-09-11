@@ -55,12 +55,12 @@ def get_geometric_median(I, i, j):
     if d % 2 == 0:
         prvi = d // 2 - 1
         drugi = d // 2
-        return((float((int(okolica2[prvi][0]) + int(okolica2[drugi][0])) / 2)), 
+        return ((float((int(okolica2[prvi][0]) + int(okolica2[drugi][0])) / 2)), 
 		float((int(okolica2[prvi][1]) + int(okolica2[drugi][1])) / 2), 
 		float((int(okolica2[prvi][2]) + int(okolica2[drugi][2])) / 2))
 
     else:
-        return(okolica2[d // 2])
+        return(float(okolica2[d // 2][0]), float(okolica2[d // 2][1]), float(okolica2[d // 2][2]))
 
 			
 			
@@ -75,18 +75,15 @@ if __name__ == '__main__':
 
 	w, h, _ = I.shape
 	
-	outfile = copy.copy(I)
-	
 	for i in range(w):
 		for j in range(h):
 			#print((i, j), " -> ", I[i, j])
-			okolica = get_neighborhood(I, i, j, 3)
+			#okolica = get_neighborhood(I, i, j, 3)
 			#print(okolica)
-			rgb = get_rgb_neighborhood(I, i, j)
+			#rgb = get_rgb_neighborhood(I, i, j)
 			#print(rgb)
 			mediana = get_geometric_median(I, i, j)
 			print(mediana)
 			
-			
-	print("Dimenzije slike: ", I.shape)		
+	#print("Dimenzije slike: ", I.shape)		
 			
