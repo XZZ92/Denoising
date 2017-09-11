@@ -13,9 +13,9 @@ Image denoising is a process of removing noise from an image, while at the same 
 - read the infile and outfile name
 - open infile picture as numpy array and make a copy of it
 - for each pixel of the infile:
-	- calculate its k-'okolica' B_k(p) and save it in a list m (or numpy array)
+	- calculate its k-'neighborhood' and save it in a list m 
 	- calculate median of elements in list m
-	- in new image (outfile), in the position of pixel p (in infile), copy the median of its k-'okolica'
+	- in new image (outfile), in the position of pixel p (in infile), copy the median of its k-'neighborhood'
 - save the new image with an appropriate name
 
 
