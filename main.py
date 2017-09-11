@@ -45,25 +45,53 @@ def get_rgb_neighborhood(I, i, j):
 	
 	return rgb_okolica
 		
-	
-	
-	
+
+			
 def get_geometric_median(I, i, j):
-    okolica2 = get_rgb_neighborhood(I, i, j)
-    okolica2.sort()
-    d = len(okolica2)
-    if d % 2 == 0:
-        prvi = d // 2 - 1
-        drugi = d // 2
-        return ((float((int(okolica2[prvi][0]) + int(okolica2[drugi][0])) / 2)), 
-		float((int(okolica2[prvi][1]) + int(okolica2[drugi][1])) / 2), 
-		float((int(okolica2[prvi][2]) + int(okolica2[drugi][2])) / 2))
 
-    else:
-        return(float(okolica2[d // 2][0]), float(okolica2[d // 2][1]), float(okolica2[d // 2][2]))
+	r_okolica = []
+	g_okolica = []
+	b_okolica = []
+	
+	okolica2 = get_rgb_neighborhood(I, i, j)
+	for element in okolica2:
+		r_okolica.append(element[0])
+		g_okolica.append(element[1])
+		b_okolica.append(element[2])
+		
+	r_okolica.sort()
+	g_okolica.sort()
+	b_okolica.sort()
+	
+	r = len(r_okolica)
+	g = len(g_okolica)
+	b = len(b_okolica)
+	
+	if r % 2 == 0:
+		prvi = r // 2 - 1
+		drugi = r // 2
+		r_average = float((int(r_okolica[prvi]) + int(r_okolica[drugi])) / 2)
+	else:
+		r_average = float(r_okolica[r // 2])
+		
+	if g % 2 == 0:
+		prvi = g // 2 - 1
+		drugi = g // 2
+		g_average = float((int(g_okolica[prvi]) + int(g_okolica[drugi])) / 2)
+	else:
+		g_average = float(g_okolica[g // 2])
+		
+	if b % 2 == 0:
+		prvi = b // 2 - 1
+		drugi = b // 2
+		b_average = float((int(b_okolica[prvi]) + int(b_okolica[drugi])) / 2)
+	else:
+		b_average = float(b_okolica[b // 2])
+		
+		
+	return [r_average, g_average, b_average]
 
-			
-			
+	
 	
 if __name__ == '__main__':
 	if len(sys.argv) < 2:
@@ -75,6 +103,7 @@ if __name__ == '__main__':
 
 	w, h, _ = I.shape
 	
+
 	for i in range(w):
 		for j in range(h):
 			#print((i, j), " -> ", I[i, j])
@@ -84,6 +113,9 @@ if __name__ == '__main__':
 			#print(rgb)
 			mediana = get_geometric_median(I, i, j)
 			print(mediana)
+			
+			
+			
 			
 	#print("Dimenzije slike: ", I.shape)		
 			
