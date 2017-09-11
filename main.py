@@ -17,6 +17,7 @@ import copy
 
 
 def get_neighborhood(I, i, j, k):
+	'''izracuna k-okolico piksla na mestu (i, j)'''
 	
 	w, h, _ = I.shape
 	
@@ -35,8 +36,9 @@ def get_neighborhood(I, i, j, k):
 	
 	
 def get_rgb_neighborhood(I, i, j):
+	'''izracuna k-okolica prostora (r, g, b) na mestu piksla (i, j)'''
 	
-	okolica1 = get_neighborhood(I, i, j, 3)
+	okolica1 = get_neighborhood(I, i, j, 2)
 	rgb_okolica = []
 	
 	for element in okolica1:
@@ -48,6 +50,8 @@ def get_rgb_neighborhood(I, i, j):
 
 			
 def get_geometric_median(I, i, j):
+	'''izracuna mediano rgb-okolice na mestu piksla (i, j) - mediana izracunana posebej za vsako rgb-komponento'''
+
 
 	r_okolica = []
 	g_okolica = []
@@ -99,11 +103,13 @@ if __name__ == '__main__':
 		sys.exit(1)
 
 	infile = sys.argv[1]
+	outfile = sys.argv[2]
+	
 	I = imageio.imread(infile)
-
 	w, h, _ = I.shape
 	
-
+	J = numpy.copy(I)
+	
 	for i in range(w):
 		for j in range(h):
 			#print((i, j), " -> ", I[i, j])
@@ -112,10 +118,10 @@ if __name__ == '__main__':
 			#rgb = get_rgb_neighborhood(I, i, j)
 			#print(rgb)
 			mediana = get_geometric_median(I, i, j)
-			print(mediana)
 			
+			J[i, j] = mediana
 			
-			
+	imageio.imwrite(outfile, J)	
 			
 	#print("Dimenzije slike: ", I.shape)		
 			
