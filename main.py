@@ -147,7 +147,7 @@ if __name__ == '__main__':
 			#average = get_average(I, i, j)
 			
 			J[i, j] = mediana
-			print("Progress: " + str(round(i/w*100, 1)) + "%", end="\r")
+			print("Progress: " + str(round(i / w * 100, 1)) + "%", end = "\r")
 			
 	imageio.imwrite(outfile, J)	
 			
