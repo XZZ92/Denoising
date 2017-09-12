@@ -14,6 +14,7 @@ def get_neighborhood(I, i, j, k):
 	
 	for idx in range(i - k, i + k):
 		for jdx in range(j - k, j + k):
+			
 			#kdaj smo izven slike
 			
 			if idx < 0 or idx > w - 1 or jdx < 0 or jdx > h - 1:
@@ -25,9 +26,9 @@ def get_neighborhood(I, i, j, k):
 	
 	
 def get_rgb_neighborhood(I, i, j):
-	'''izracuna k-okolica prostora (r, g, b) na mestu piksla (i, j)'''
+	'''izracuna k-okolico prostora (r, g, b) na mestu piksla (i, j)'''
 	
-	okolica1 = get_neighborhood(I, i, j, 2)
+	okolica1 = get_neighborhood(I, i, j, 1)
 	rgb_okolica = []
 	
 	for element in okolica1:
@@ -78,7 +79,7 @@ def get_average(I, i, j):
 	
 	
 def get_median(I, i, j):
-	'''izracuna mediano rgb-okolice na mestu piksla (i, j) - mediana izracunana posebej za vsako rgb-komponento'''
+	'''izracuna mediano rgb-okolice na mestu piksla (i, j) - posebej za vsako rgb-komponento'''
 
 
 	r_okolica = []
@@ -143,9 +144,9 @@ if __name__ == '__main__':
 			#print((i, j), " -> ", I[i, j])
 			
 			mediana = get_median(I, i, j)
+			#average = get_average(I, i, j)
 			
 			J[i, j] = mediana
-			
 			print("Progress: " + str(round(i/w*100, 1)) + "%", end="\r")
 			
 	imageio.imwrite(outfile, J)	
