@@ -1,0 +1,22 @@
+NAVODILA ZA LAŽJO UPORABO:
+
+- v ukazni vrstici se pomaknemo v mapo, kjer je shranjen program main.py
+- program poženemo tako, da napišemo: python main.py ime_vhodne_slike ime_izhodne_slike
+  !!! PAZI: vhodna slika mora biti shranjena v isti mapi, kjer je shranjen program main.py
+- počakamo, dokler se slika ne zapiše in shrani (v ukazni vrstici se izpisuje, koliko je že narejeno (v %))
+- izhodna slika je shranjena v isti mapi kot izhodna oz. datoteka main.py
+
+Možnosti:
+
+1. možnost spreminjanja:
+- v datoteki main.py lahko izbiramo način izračuna novih pikslov --- lahko uporabimo funkcijo get_average ali funkcijo get_median
+- v 146-149 vrstici programa ustrezno spremenimo imena. 
+  Če se torej odločimo za uporabo funkcije get_average, zakomentiramo 146 vrstico in odkomentiramo 147 vrstico,
+  v 149 vrstici pa zapišemo J[i, j] = average
+  
+2. možnost spreminjanja:
+- v datoteki main.py lahko izbiramo k-okolico v funkciji get_rgb_neighborhood, tj. lahko izbiramo število zajetih 'sosedov' za izračun novega piksla
+- v 31 vrstici (okolica1 = get_neighborhood(I, i, j, 1)) lahko ustrezno spreminjamo zadnji argument, ki ga funkcija sprejme (na mestu, kjer je tukaj št. 1)
+
+
+!!! OPOMBA: če programa nič ne popravljamo, je privzeta funkcija za izračun novih pikslov get_median in k je nastavljen na 1
