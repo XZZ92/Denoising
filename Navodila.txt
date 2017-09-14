@@ -1,6 +1,6 @@
 NAVODILA ZA LAŽJO UPORABO:
 
-- v ukazni vrstici se pomaknemo v mapo, kjer je shranjen program main.py
+- v ukazni vrstici se pomaknemo v mapo, kjer je shranjen program main.py (z ukazom cd se pomaknemo v mapo, s cd.. pa iz mape- imena map     lahko iščemo kar s tabulatorjem)
 - program poženemo tako, da napišemo: python main.py ime_vhodne_slike ime_izhodne_slike
   !!! PAZI: vhodna slika mora biti shranjena v isti mapi, kjer je shranjen program main.py
 - počakamo, dokler se slika ne zapiše in shrani (v ukazni vrstici se izpisuje, koliko je že narejeno (v %))
